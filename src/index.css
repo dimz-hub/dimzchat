@@ -22,6 +22,11 @@ code {
   color: #FFFDFB;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
 }
+.landing-page{
+  background-color: rgba(23, 89, 117, 0.76);
+  color: #FFFDFB;
+
+}
 .signup input{
    padding: 10px 20px;
    width: 300px;
@@ -113,6 +118,7 @@ border-radius: 0px 10px 10px 10px;
   max-height: 100vh;
   display:flex;
   flex-direction: column;
+  
 }
 
 
@@ -152,7 +158,76 @@ border-radius: 0px 10px 10px 10px;
   left: 40px;
   width: 20vw
 }
+.man{
+  animation: move 3s ease  forwards;
+}
+
+@keyframes move {
+  0%{
+    transform: translateX(-100px);
+  }
+  70%{
+    transform: translateX(20px);
+    
+  }
+  100%{
+    transform: translateX(30px);
+    
+  }
+}
+.world{
+  animation: earth  3s ease  forwards;
+}
+
+@keyframes earth {
+  0%{
+    transform: translateX(100px);
+  }
+  70%{
+    transform: translateX(-20px);
+    
+  }
+  100%{
+    transform: translateX(-30px);
+    
+  }
+}
+
+}
 
 
+.man{
+  animation: move 3s ease  forwards;
+}
+
+@keyframes move {
+  0%{
+    transform: translateX(-300px);
+  }
+  70%{
+    transform: translateX(50px);
+    
+  }
+  100%{
+    transform: translateX(30px);
+    
+  }
+}
+.world{
+  animation: earth  3s ease  forwards;
+}
+
+@keyframes earth {
+  0%{
+    transform: translateX(300px);
+  }
+  70%{
+    transform: translateX(-50px);
+    
+  }
+  100%{
+    transform: translateX(-30px);
+    
+  }
 }
 
