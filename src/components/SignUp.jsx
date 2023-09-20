@@ -77,15 +77,15 @@ await setDoc(doc(db,'users', res.user.uid), {
        <h2 className='font-[500] text-xl xs:mb-[40px]'>SignUp</h2>
        <form onSubmit={handleSubmit}  className='flex flex-col items-center justify-center gap-[30px] mt-[10px] '>
         <span className = ' xs:mb-[20px]' >
-        <input type='text' id='name' className='rounded-[20px] text-[black]' placeholder='display name' onChange={(e) => setDisplayName(e.target.value)} />
+        <input type='text' id='name' className='rounded-[20px] text-[black]' placeholder='display name' onChange={(e) => setDisplayName(e.target.value)}  required/>
         </span>
         <span className = ' xs:mb-[20px]'>
-        <input type='email' id='email' className='rounded-[20px] text-[black]' placeholder='email' onChange={(e) => setEmail(e.target.value)} />
+        <input type='email' id='email' className='rounded-[20px] text-[black]' placeholder='email' onChange={(e) => setEmail(e.target.value)}  required/>
         </span>
       <span className = ' xs:mb-[20px]'>
-        <input type='password'id='password' className='rounded-[20px] text-[black]' placeholder='password' onChange={(e) => setPassword(e.target.value)}/>
+        <input type='password'id='password' className='rounded-[20px] text-[black]' placeholder='password' onChange={(e) => setPassword(e.target.value)} required/>
       </span>
-        <input type='file' className='hidden ' id='file' onChange={(e) => setFile(e.target.files[0])}/>
+        <input type='file' className='hidden ' id='file' onChange={(e) => setFile(e.target.files[0])} required/>
 
        <label htmlFor= 'file' className='flex mt-[-15px] xs:mb-[20px] items-center xs:gap-[40px]'>
       <img src='./gallery.png' className='w-[40px]' />
@@ -95,7 +95,7 @@ await setDoc(doc(db,'users', res.user.uid), {
        </label>
 
        <button className='w-[300px] bg-[black] pt-[10px] pb-[10px] mt-[-10px] rounded-[20px] xs:mb-[60px]'>SignUp</button>
-      {error && <span>something went wrong</span>}
+      
        </form>
 <p>You have an Account &#x1F914;, <Link to='/signin' className='font-bold underline'> Login</Link></p> 
         {error && <span>Something went wrong</span>}
