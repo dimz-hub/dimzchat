@@ -36,15 +36,15 @@ export default function Signin() {
       </h1>
 
       <h2 className='font-[500] text-xl'>Login</h2>
-      <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center gap-[30px] xs:gap-[30px]'>
-       <span>
+      <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center gap-[30px] '>
+       <span  className = ' xs:mb-[20px]'>
        <input type='email' id='email' className='rounded-[20px] text-[black]' placeholder='email' onChange={(e) => setEmail(e.target.value)}   />
        </span>
-     <span>
+     <span className = ' xs:mb-[20px]'>
        <input type='password'id='password' className='rounded-[20px] text-[black]' placeholder='password' onChange={(e) => setPassword(e.target.value)} />
      </span>
 
-      <button className='w-[300px] bg-[black] pt-[10px] pb-[10px] mt-[-10px] rounded-[20px]'>Sign In</button>
+      <button className='w-[300px] bg-[black] pt-[10px] pb-[10px] mt-[-10px] rounded-[20px] xsmb-[30px]'>Sign In</button>
 
 <p>You don't have an account &#x1F632; , change that <Link to='/signup' className='underline font-bold'>Now</Link> </p>
 {error && <span>Invalid login details</span> }
