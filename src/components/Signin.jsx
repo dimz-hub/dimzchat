@@ -29,13 +29,13 @@ export default function Signin() {
   return (
     <div className=' h-[100vh] flex items-center justify-center'>
 
-<div className='signup flex flex-col items-center rounded-[20px] h-[70vh] w-[50%] gap-[20px] xs:w-[100%] xs:h-[100%] '>
+<div className='signup flex flex-col items-center rounded-[20px] h-[70vh] w-[50%] gap-[20px] xs:w-[100%] xs:h-[100%] xs:rounded-none  xs:pt-[75px]'>
       
       <h1 className='mt-[20px] font-bold text-2xl'>
        DIMZ CHAT 
       </h1>
 
-      <h2 className='font-[500] text-xl'>Login</h2>
+      <h2 className='font-[500] text-xl xs:mb-[50px]'>Login</h2>
       <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center gap-[30px] '>
        <span  className = ' xs:mb-[20px]'>
        <input type='email' id='email' className='rounded-[20px] text-[black]' placeholder='email' onChange={(e) => setEmail(e.target.value)}   />
