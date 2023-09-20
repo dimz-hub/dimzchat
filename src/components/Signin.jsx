@@ -29,10 +29,10 @@ export default function Signin() {
   return (
     <div className=' h-[100vh] flex items-center justify-center'>
 
-<div className='signup flex flex-col items-center rounded-[20px] h-[70vh] w-[50%] gap-[20px]'>
+<div className='signup flex flex-col items-center rounded-[20px] h-[70vh] w-[50%] gap-[20px] xs:w-[80%] xs:h-[67vh] '>
       
       <h1 className='mt-[20px] font-bold text-2xl'>
-       DIMZ CHAT
+       DIMZ CHAT 
       </h1>
 
       <h2 className='font-[500] text-xl'>Login</h2>
