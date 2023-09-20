@@ -36,7 +36,7 @@ export default function Signin() {
       </h1>
 
       <h2 className='font-[500] text-xl'>Login</h2>
-      <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center gap-[30px]'>
+      <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center gap-[30px] xs:gap-[30px]'>
        <span>
        <input type='email' id='email' className='rounded-[20px] text-[black]' placeholder='email' onChange={(e) => setEmail(e.target.value)}   />
        </span>
