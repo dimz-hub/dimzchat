@@ -27,6 +27,7 @@ useEffect(() => {
 },[data.chatId])
 
 
+console.log(messages)
 
 
 

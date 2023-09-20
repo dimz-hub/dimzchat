@@ -41,7 +41,7 @@ export default function Chatinput() {
           })
         })
       });
-    }, 5000)
+    }, 4000)
   }
 );
        
@@ -51,7 +51,9 @@ export default function Chatinput() {
             id: uuid(),
             senderId: currentUser.uid,
             text,
-            date: Timestamp.now()
+            date: Timestamp.now(),
+            food: 'pap'
+
           })
         })
 

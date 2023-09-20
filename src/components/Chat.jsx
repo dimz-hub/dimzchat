@@ -6,7 +6,7 @@ export default function Chat() {
 const [showBar, setshowBar] = useState(false)
 
 
-console.log(showBar)
+
 function  handleBar () {
   setshowBar(!showBar)
 }
