@@ -30,7 +30,10 @@ const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
             <span className='text-gray-500 text-sm'>{`${formattedHours}:${formattedMinutes} `}</span>
         </div> 
         <div className="message-content flex flex-col gap-3">
+          {
+              message.text &&
             <p className='p-1  '>{message?.text} </p>
+          }
             {
               message.img &&
             <img  src={message?.img}className='h-[150px] w-[150px] object-cover  mb-[15px]'/>
