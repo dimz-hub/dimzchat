@@ -87,7 +87,7 @@ await setDoc(doc(db,'users', res.user.uid), {
       </span>
         <input type='file' className='hidden ' id='file' onChange={(e) => setFile(e.target.files[0])}/>
 
-       <label htmlFor= 'file' className='flex mt-[-15px] xs:mb-[20px]'>
+       <label htmlFor= 'file' className='flex mt-[-15px] xs:mb-[20px] items-center xs:gap-[40px]'>
       <img src='./gallery.png' className='w-[40px]' />
       <p>
         Add a avatar 
@@ -97,7 +97,7 @@ await setDoc(doc(db,'users', res.user.uid), {
        <button className='w-[300px] bg-[black] pt-[10px] pb-[10px] mt-[-10px] rounded-[20px] xs:mb-[60px]'>SignUp</button>
       {error && <span>something went wrong</span>}
        </form>
-<p>You have an Account &#x1F914;, <Link to='/' className='font-bold underline'> Login</Link></p> 
+<p>You have an Account &#x1F914;, <Link to='/signin' className='font-bold underline'> Login</Link></p> 
         {error && <span>Something went wrong</span>}
        </div>
     </div>
