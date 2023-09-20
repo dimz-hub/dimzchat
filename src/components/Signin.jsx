@@ -29,7 +29,7 @@ export default function Signin() {
   return (
     <div className=' h-[100vh] flex items-center justify-center'>
 
-<div className='signup flex flex-col items-center rounded-[20px] h-[70vh] w-[50%] gap-[20px] xs:w-[80%] xs:h-[67vh] '>
+<div className='signup flex flex-col items-center rounded-[20px] h-[70vh] w-[50%] gap-[20px] xs:w-[100%] xs:h-[100%] '>
       
       <h1 className='mt-[20px] font-bold text-2xl'>
        DIMZ CHAT 
@@ -44,7 +44,7 @@ export default function Signin() {
        <input type='password'id='password' className='rounded-[20px] text-[black]' placeholder='password' onChange={(e) => setPassword(e.target.value)} />
      </span>
 
-      <button className='w-[300px] bg-[black] pt-[10px] pb-[10px] mt-[-10px] rounded-[20px] xsmb-[30px]'>Sign In</button>
+      <button className='w-[300px] bg-[black] pt-[10px] pb-[10px] mt-[-10px] rounded-[20px] xs:mb-[60px]'>Sign In</button>
 
 <p>You don't have an account &#x1F632; , change that <Link to='/signup' className='underline font-bold'>Now</Link> </p>
 {error && <span>Invalid login details</span> }
