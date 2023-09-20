@@ -28,7 +28,7 @@ export default function Chatinput() {
     alert('error occurred')
   }, 
   () => {
-    setTimeout(() => {
+    
 
       getDownloadURL(uploadTask.snapshot.ref).then( async (downloadURL) => {
         await updateDoc(doc(db, 'chats', data.chatId), {
@@ -41,7 +41,7 @@ export default function Chatinput() {
           })
         })
       });
-    }, 4000)
+    
   }
 );
        
@@ -52,7 +52,7 @@ export default function Chatinput() {
             senderId: currentUser.uid,
             text,
             date: Timestamp.now(),
-            food: 'pap'
+            
 
           })
         })

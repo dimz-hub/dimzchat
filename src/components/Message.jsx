@@ -26,7 +26,7 @@ const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
             <img src={message.senderId === currentUser.uid? 
                        currentUser.photoURL
                        :data.user.photoURL
-          } className='w-[40px] h-[40px] rounded-[50%] object-cover'/>
+          } className='w-[40px] h-[40px] rounded-[50%] object-contain'/>
             <span className='text-gray-500 text-sm'>{`${formattedHours}:${formattedMinutes} `}</span>
         </div> 
         <div className="message-content flex flex-col gap-3">
