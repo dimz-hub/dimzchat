@@ -68,33 +68,33 @@ await setDoc(doc(db,'users', res.user.uid), {
   return (
     <div className=' h-[100vh] flex items-center justify-center'>
 
-    <div className='signup flex flex-col items-center rounded-[20px] h-[70vh] w-[50%] gap-[px]'>
+    <div className='signup flex flex-col items-center rounded-[20px] h-[70vh] w-[50%] gap-[px] xs:w-[100%] xs:h-[100%] xs:rounded-none'>
       
        <h1 className='mb-[10px] font-bold text-2xl'>
         DIMZ CHAT
        </h1>
 
-       <h2 className='font-[500] text-xl'>SignUp</h2>
+       <h2 className='font-[500] text-xl xs:mb-[50px]'>SignUp</h2>
        <form onSubmit={handleSubmit}  className='flex flex-col items-center justify-center gap-[30px] mt-[10px] '>
-        <span>
+        <span className = ' xs:mb-[20px]' >
         <input type='text' id='name' className='rounded-[20px] text-[black]' placeholder='display name' onChange={(e) => setDisplayName(e.target.value)} />
         </span>
-        <span>
+        <span className = ' xs:mb-[20px]'>
         <input type='email' id='email' className='rounded-[20px] text-[black]' placeholder='email' onChange={(e) => setEmail(e.target.value)} />
         </span>
-      <span>
+      <span className = ' xs:mb-[20px]'>
         <input type='password'id='password' className='rounded-[20px] text-[black]' placeholder='password' onChange={(e) => setPassword(e.target.value)}/>
       </span>
         <input type='file' className='hidden ' id='file' onChange={(e) => setFile(e.target.files[0])}/>
 
-       <label htmlFor= 'file' className='flex mt-[-15px]'>
+       <label htmlFor= 'file' className='flex mt-[-15px] xs:mb-[20px]'>
       <img src='./gallery.png' className='w-[40px]' />
       <p>
         Add a avatar 
       </p>
        </label>
 
-       <button className='w-[300px] bg-[black] pt-[10px] pb-[10px] mt-[-10px] rounded-[20px]'>SignUp</button>
+       <button className='w-[300px] bg-[black] pt-[10px] pb-[10px] mt-[-10px] rounded-[20px] xs:mb-[60px]'>SignUp</button>
       {error && <span>something went wrong</span>}
        </form>
 <p>You have an Account &#x1F914;, <Link to='/' className='font-bold underline'> Login</Link></p> 
