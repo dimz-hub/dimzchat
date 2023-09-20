@@ -68,13 +68,13 @@ await setDoc(doc(db,'users', res.user.uid), {
   return (
     <div className=' h-[100vh] flex items-center justify-center'>
 
-    <div className='signup flex flex-col items-center rounded-[20px] h-[70vh] w-[50%] gap-[px] xs:w-[100%] xs:h-[100%] xs:rounded-none'>
+    <div className='signup flex flex-col items-center rounded-[20px] h-[70vh] w-[50%] gap-[px] xs:w-[100%] xs:h-[100%] xs:rounded-none  xs:pt-[75px] '>
       
        <h1 className='mb-[10px] font-bold text-2xl'>
         DIMZ CHAT
        </h1>
 
-       <h2 className='font-[500] text-xl xs:mb-[50px]'>SignUp</h2>
+       <h2 className='font-[500] text-xl xs:mb-[40px]'>SignUp</h2>
        <form onSubmit={handleSubmit}  className='flex flex-col items-center justify-center gap-[30px] mt-[10px] '>
         <span className = ' xs:mb-[20px]' >
         <input type='text' id='name' className='rounded-[20px] text-[black]' placeholder='display name' onChange={(e) => setDisplayName(e.target.value)} />
