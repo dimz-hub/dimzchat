@@ -129,6 +129,7 @@ border-radius: 0px 10px 10px 10px;
   } 
   .chat{
     display: flex;
+    border-radius: 0px;
   }
   .show-bar{
   /* display: none; */
@@ -136,16 +137,17 @@ border-radius: 0px 10px 10px 10px;
   /* margin:-100px; */
   height: 100vh;
   position: relative;
-  }
+}
   .hide-bar{
    display: none;
      
   }
-
-
+  
+  
  .chat{
   height: 100vh;
   width: 100vw;
+  border-radius: 0px;
   
 }  
 .messages{
