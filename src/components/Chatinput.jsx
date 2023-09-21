@@ -28,23 +28,26 @@ export default function Chatinput() {
   (error) => {
     alert('error occurred')
   }, 
-  () => {
-  
-
-
+  async () => {
       
-      getDownloadURL(uploadTask.snapshot.ref).then( async (downloadURL) => {
-        await updateDoc(doc(db, 'chats', data.chatId), {
-          messages: arrayUnion({
-            id: uuid(),
-            senderId: currentUser.uid,
-            text,
-            date: Timestamp.now(),
-            img:downloadURL
+   try{
+
+    const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
+       await updateDoc(doc(db, 'chats', data.chatId), {
+            messages: arrayUnion({
+              id: uuid(),
+              senderId: currentUser.uid,
+              text,
+              date: Timestamp.now(),
+              img:downloadURL
+            })
           })
-        })
-      });
-  
+        
+      }catch(error) {
+        console.log('food' , error.message)
+      }
+         
+      
           
     }
   );
