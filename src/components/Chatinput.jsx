@@ -5,7 +5,7 @@ import {useAuthContext} from '../util/AuthContext'
 import { doc, updateDoc, arrayUnion, Timestamp, serverTimestamp} from "firebase/firestore";
 import {db} from '../util/firebase'
 import {v4 as uuid} from 'uuid'
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL, uploadBytes } from "firebase/storage";
 import {storage}  from '../util/firebase'
 
 export default function Chatinput() {
@@ -22,35 +22,32 @@ export default function Chatinput() {
   const  handleSend = async ()  => {
     if(img) {
        
-         const storageRef = ref(storage, id)
-         const uploadTask = uploadBytesResumable(storageRef, img);
-         uploadTask.on(
-  (error) => {
-    alert('error occurred')
-  }, 
-  async () => {
+         const storageRef =   ref(storage, id)
+         const uploadTask =   uploadBytesResumable(storageRef, img);
       
-   try{
+      uploadTask.on(
+           (error) => {
+             alert('error occurred')
+            }, 
+            () => {
 
-    const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
-       await updateDoc(doc(db, 'chats', data.chatId), {
-            messages: arrayUnion({
-              id: uuid(),
-              senderId: currentUser.uid,
-              text,
-              date: Timestamp.now(),
-              img:downloadURL
-            })
-          })
+     getDownloadURL(storageRef).then(async  (downloadURL)  => {
+      await updateDoc(doc(db, 'chats', data.chatId), {
+
+          messages : arrayUnion({
+            id: uuid(),
+          senderId: currentUser.uid,
+          text,
+          date: Timestamp.now(),
+          img:downloadURL
+        })
+        })
+      })
+  
         
-      }catch(error) {
-        console.log('food' , error.message)
-      }
-         
       
-          
-    }
-  );
+      }
+      );
          
        }else{
           await updateDoc(doc(db, 'chats', data.chatId), {
