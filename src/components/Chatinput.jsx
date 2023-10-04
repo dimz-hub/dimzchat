@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { FaPaperclip } from 'react-icons/fa';
 import {useChatContext} from '../util/ChatContext'
 import {useAuthContext} from '../util/AuthContext'
@@ -30,19 +30,21 @@ export default function Chatinput() {
              alert('error occurred')
             }, 
             () => {
+         setTimeout(() => {
 
-     getDownloadURL(storageRef).then(async  (downloadURL)  => {
+           getDownloadURL(uploadTask.snapshot.ref).then(async  (downloadURL)  => {
       await updateDoc(doc(db, 'chats', data.chatId), {
-
+        
           messages : arrayUnion({
             id: uuid(),
-          senderId: currentUser.uid,
-          text,
+            senderId: currentUser.uid,
+            text,
           date: Timestamp.now(),
           img:downloadURL
         })
-        })
       })
+    })
+  },4000)
   
         
       
