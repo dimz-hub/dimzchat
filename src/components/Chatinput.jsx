@@ -101,7 +101,7 @@ export default function Chatinput() {
     }catch(err) {
       setSending(false)
     }
-
+    
   }
   
   
@@ -122,7 +122,7 @@ export default function Chatinput() {
       <label htmlFor='file'>
       <img  src='./gallery.png' className='w-[35px] h-[25px]' alt='gallery' />
       </label> 
-      <button onClick={() => handleSend()} className='p-1'>Send</button>
+      <button onClick={() => handleSend()} className='p-1'>  {sending ? 'Sending...' : 'Send'}</button>
       </div>
      </div>
   )
