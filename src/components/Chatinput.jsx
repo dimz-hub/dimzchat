@@ -17,9 +17,14 @@ export default function Chatinput() {
   const id = uuid()
   
 
- 
+ const imageId = text.substring(0,4)
+console.log(imageId)
   
   const  handleSend = async ()  => {
+
+    try{
+
+    
     if(img) {
        
          const storageRef =   ref(storage, id)
@@ -29,22 +34,28 @@ export default function Chatinput() {
            (error) => {
              alert('error occurred')
             }, 
-            () => {
-         setTimeout(() => {
+           async  () => {
+              try{
 
-           getDownloadURL(uploadTask.snapshot.ref).then(async  (downloadURL)  => {
-      await updateDoc(doc(db, 'chats', data.chatId), {
-        
+                const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
+                
+                  
+                
+                await updateDoc(doc(db, 'chats', data.chatId), {
           messages : arrayUnion({
             id: uuid(),
             senderId: currentUser.uid,
             text,
-          date: Timestamp.now(),
-          img:downloadURL
+            date: Timestamp.now(),
+            img:downloadURL
+          })
         })
-      })
-    })
-  },4000)
+      }catch(err){
+        
+      }
+        
+      
+
   
         
       
@@ -80,7 +91,11 @@ export default function Chatinput() {
        })
        setText('')
        setImg(null)
+    }catch(err) {
+      console.log(err.message)
     }
+
+  }
   
   
 
