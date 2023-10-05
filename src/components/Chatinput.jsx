@@ -12,19 +12,22 @@ export default function Chatinput() {
 
   const [img, setImg] = useState(null)
   const [text, setText] = useState('')
+  const [sending, setSending] = useState(false)
   const {data} = useChatContext()
   const {currentUser} = useAuthContext()
   const id = uuid()
   
 
- const imageId = text.substring(0,4)
-console.log(imageId)
+
   
   const  handleSend = async ()  => {
 
+    if (sending) return;
+
     try{
 
-    
+      setSending(true);
+
     if(img) {
        
          const storageRef =   ref(storage, id)
@@ -50,7 +53,11 @@ console.log(imageId)
             img:downloadURL
           })
         })
+        setText('');
+        setImg(null);
+        setSending(false)    
       }catch(err){
+        setSending(false)
         
       }
         
@@ -74,7 +81,8 @@ console.log(imageId)
             })
           })
   
-  
+          setText('');
+          setSending(false)
        }
        await updateDoc(doc(db, 'userchats', currentUser.uid), {
         [data.chatId + '.lastMessage']: {
@@ -89,10 +97,9 @@ console.log(imageId)
         [data.chatId + '.date'] :  serverTimestamp()
   
        })
-       setText('')
-       setImg(null)
+      
     }catch(err) {
-      console.log(err.message)
+      setSending(false)
     }
 
   }
