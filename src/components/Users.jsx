@@ -45,7 +45,7 @@ setshowBar(!showbar)
        {Object.entries(chats).sort((a,b) => b[1].date - a[1].date)?.map((chat) => {
          return (
         <div onClick= {() => handleSelect(chat[1]?.userInfo)} className=' flex items-center pl-2 gap-2 text-[white] hover:bg-[rgba(0,0,0,0.4)]' key={chat[0]}>
-            <img src={chat[1]?.userInfo?.photoURL} className='user-img w-[40px] h-[40px] rounded-[50%]' /> 
+            <img src={chat[1]?.userInfo?.photoURL} className='user-img w-[40px] h-[40px] rounded-[50%] object-cover' /> 
             <div>
             <p className='font-semibold'>{chat[1]?.userInfo?.displayName}</p>
             <p className='font-thin'>{chat[1]?.lastMessage?.text}</p>

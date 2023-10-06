@@ -32,7 +32,7 @@ const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
         <div className="message-content flex flex-col gap-3">
           {
               message?.text &&
-            <p className='p-1  '>{message?.text} </p>
+            <p className='p-1 xs:mb-[10px]  '>{message?.text} </p>
           }
             {
               message.img &&

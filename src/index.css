@@ -61,7 +61,7 @@ grid-template-columns: 35% 65%;
   object-fit: fill;
 }
 .user-img{
-  object-fit: fill;
+  /* object-fit: 100%; */
 
 }
 .user-search{
@@ -125,6 +125,16 @@ border-radius: 0px 10px 10px 10px;
 }
 
 @media screen and (max-width: 800px){
+
+.dimz-chat{
+  position: relative;
+  top: 87vh;
+  left: 14px;
+  white-space: nowrap;
+font-size: 22px;
+}
+
+
    .main-chat{
   width: 100vw;
     
@@ -233,5 +243,6 @@ border-radius: 0px 10px 10px 10px;
     transform: translateX(-30px);
     
   }
+
 }
 

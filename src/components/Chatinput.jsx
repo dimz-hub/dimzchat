@@ -120,7 +120,7 @@ export default function Chatinput() {
         <input type='file' id = 'file' className='hidden' onChange={(e) => setImg(e.target.files[0])}/>
       <FaPaperclip className='text-gray-500 w-[25px] h-[25px] mr-[-5px] mt-[3px]'   />
       <label htmlFor='file'>
-      <img  src='./gallery.png' className='w-[35px] h-[25px]' alt='gallery' />
+      <img  src='./gallery.png' className='w-[35px] h-[25px]  xs:mr-[10px]' alt='gallery' />
       </label> 
       <button onClick={() => handleSend()} className='p-1'>  {sending ? 'Sending...' : 'Send'}</button>
       </div>
