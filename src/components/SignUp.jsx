@@ -60,10 +60,10 @@ const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
     setError(true)
   },4000)
 }
-
-}); 
 await setDoc(doc(db, 'userchats', res.user.uid), {})
 navigate('/chat')
+
+}); 
     } catch(err) {
       setError(true)
      console.log(err.message)
