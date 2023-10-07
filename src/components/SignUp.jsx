@@ -32,31 +32,38 @@ export default function SignUp() {
         (error) => {
           setError(true)
         }, 
-        () => {
-        setTimeout(async () => {
+     async    () => {
+        
        
     try{
 const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
-await updateProfile(res.user, {
-  displayName,
-  photoURL:downloadURL
 
-})
+  
+  await updateProfile(res.user, {
+    displayName,
+    photoURL:downloadURL
+    
+  })
+  
+  await setDoc(doc(db,'users', res.user.uid), {
+    uid : res.user.uid,
+    displayName,
+    email,
+    photoURL: downloadURL
+  })
 
-await setDoc(doc(db,'users', res.user.uid), {
-   uid : res.user.uid,
-   displayName,
-   email,
-  photoURL: downloadURL
-})
 
-           await setDoc(doc(db, 'userchats', res.user.uid), {})
-           navigate('/chat')
-    } catch (error) {
-      setError(true)
-    }
-        },4000)
-          }); 
+
+} catch (error) {
+  setTimeout(() => {
+
+    setError(true)
+  },4000)
+}
+
+}); 
+await setDoc(doc(db, 'userchats', res.user.uid), {})
+navigate('/chat')
     } catch(err) {
       setError(true)
      console.log(err.message)

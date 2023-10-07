@@ -57,13 +57,7 @@ grid-template-columns: 35% 65%;
   border-radius: 10px;
 }
 
-.user-image{
-  object-fit: fill;
-}
-.user-img{
-  /* object-fit: 100%; */
 
-}
 .user-search{
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.401);
   padding-bottom: 5px;
