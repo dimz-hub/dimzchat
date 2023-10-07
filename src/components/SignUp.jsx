@@ -15,10 +15,13 @@ export default function SignUp() {
   const [displayName, setDisplayName] = useState('')
   const {createUser} = useAuthContext()
   const [error, setError] = useState(false)
-  const [file , setFile] = useState()
+  const [file , setFile] = useState(null)
+  const [upload, setUpload] = useState(false)
 
   const navigate = useNavigate()
 
+
+  
   
   async function handleSubmit(e) {
     e.preventDefault()
@@ -32,12 +35,23 @@ export default function SignUp() {
         (error) => {
           setError(true)
         }, 
-     async    () => {
+     async () => {
         
        
     try{
-const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
+      let downloadURL
+      while(!downloadURL) {
+           try{
 
+             downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
+            }catch(err){
+              setUpload(true)
+            }
+      }
+
+      if(downloadURL) {
+
+      
   
   await updateProfile(res.user, {
     displayName,
@@ -52,18 +66,20 @@ const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
     photoURL: downloadURL
   })
 
+  await setDoc(doc(db, 'userchats', res.user.uid), {})
 
-
-} catch (error) {
-  setTimeout(() => {
-
-    setError(true)
-  },4000)
-}
-await setDoc(doc(db, 'userchats', res.user.uid), {})
 navigate('/chat')
+    }
+} catch (error) {
+  
+  
+  setError(true)
+  
+}
+
 
 }); 
+
     } catch(err) {
       setError(true)
      console.log(err.message)
@@ -84,7 +100,7 @@ navigate('/chat')
        <h2 className='font-[500] text-xl xs:mb-[40px]'>SignUp</h2>
        <form onSubmit={handleSubmit}  className='flex flex-col items-center justify-center gap-[30px] mt-[10px] '>
         <span className = ' xs:mb-[20px]' >
-        <input type='text' id='name' className='rounded-[20px] text-[black]' placeholder='display name' onChange={(e) => setDisplayName(e.target.value)}  required/>
+        <input type='text' id='name' className='rounded-[20px] text-[black]' value = {displayName} placeholder='display name' onChange={(e) => setDisplayName(e.target.value)}  required/>
         </span>
         <span className = ' xs:mb-[20px]'>
         <input type='email' id='email' className='rounded-[20px] text-[black]' placeholder='email' onChange={(e) => setEmail(e.target.value)}  required/>
@@ -106,6 +122,7 @@ navigate('/chat')
        </form>
 <p>You have an Account &#x1F914;, <Link to='/signin' className='font-bold underline'> Login</Link></p> 
         {error && <span>Something went wrong</span>}
+        {upload && <span>Loading..., patience is key</span>}
        </div>
     </div>
   )

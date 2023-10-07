@@ -9,7 +9,7 @@ export default function MainNav({handlebar}) {
   const {data} = useChatContext()
 
 
-  console.log(data)
+  
 
  
 
