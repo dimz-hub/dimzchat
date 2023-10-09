@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import {useAuthContext} from '../util/AuthContext'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import {storage}  from '../util/firebase'
-import { updateProfile } from 'firebase/auth';
+import {storage, auth}  from '../util/firebase'
+import { updateProfile,  createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from "firebase/firestore"; 
 import {useNavigate, Link} from 'react-router-dom'
  import {db} from '../util/firebase'
+ import {  } from "firebase/auth";
 
 
 
@@ -25,8 +26,10 @@ export default function SignUp() {
   
   async function handleSubmit(e) {
     e.preventDefault()
+
+    setUpload(true)
     try{
-      const res =  await createUser(email, password) 
+      const res =  await createUserWithEmailAndPassword(auth,email, password) 
       const storageRef = ref(storage, displayName);
       
       const uploadTask = uploadBytesResumable(storageRef, file);
@@ -34,26 +37,15 @@ export default function SignUp() {
       uploadTask.on(
         (error) => {
           setError(true)
+          console.log(error.message)
         }, 
-     async () => {
-        
-       
-    try{
-      let downloadURL
-      while(!downloadURL) {
-           try{
+     async  () => {
 
-             downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
-            }catch(err){
-              setUpload(true)
-            }
-      }
-
-      if(downloadURL) {
+         await uploadTask
 
       
-  
-  await updateProfile(res.user, {
+     getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+       await updateProfile(res.user, {
     displayName,
     photoURL:downloadURL
     
@@ -63,26 +55,17 @@ export default function SignUp() {
     uid : res.user.uid,
     displayName,
     email,
-    photoURL: downloadURL
+    photoURL: downloadURL 
   })
 
   await setDoc(doc(db, 'userchats', res.user.uid), {})
 
-navigate('/chat')
-    }
-} catch (error) {
-  
-  
-  setError(true)
-  
-}
-
-
+ 
+  navigate('/chat')
 }); 
-
+})
     } catch(err) {
       setError(true)
-     console.log(err.message)
 
     }  
 }
@@ -110,7 +93,7 @@ navigate('/chat')
       </span>
         <input type='file' className='hidden ' id='file' onChange={(e) => setFile(e.target.files[0])} required/>
 
-       <label htmlFor= 'file' className='flex mt-[-15px] xs:mb-[20px] items-center xs:gap-[40px]'>
+       <label htmlFor= 'file' className='flex mt-[-15px] xs:mb-[20px] items-center xs:gap-[10px]'>
       <img src='./gallery.png' className='w-[40px]' />
       <p>
         Add a avatar 
@@ -121,8 +104,8 @@ navigate('/chat')
       
        </form>
 <p>You have an Account &#x1F914;, <Link to='/signin' className='font-bold underline'> Login</Link></p> 
-        {error && <span>Something went wrong</span>}
         {upload && <span>Loading..., patience is key</span>}
+        {error && <span>Something went wrong</span>}
        </div>
     </div>
   )

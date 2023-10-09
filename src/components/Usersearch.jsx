@@ -84,7 +84,7 @@ if(!res.exists()) {
          }
         { user &&
          <div onClick = {handleSelected} className=' user-search flex items-center pl-2 gap-2 '>
-            <img src={user?.photoURL} className='user-img w-[40px] h-[40px] rounded-[50%]' /> 
+            <img src={user?.photoURL} className='user-img w-[40px] h-[40px] rounded-[50%] object-cover' /> 
             <p className='font-semibold'>{user?.displayName}</p>
          </div> }
     </div>
