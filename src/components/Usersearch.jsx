@@ -35,7 +35,9 @@ if(querySelector.empty) {
 
 
 function handlekey(e) {
- return  e.code === 'Enter' && handleSearch()
+ if (  e.code === 'Enter' || e.keyCode === 13) {
+    handleSearch()
+ }
 }
 
 async function handleSelected() {
