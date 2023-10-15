@@ -35,7 +35,7 @@ if(querySelector.empty) {
 
 
 function handlekey(e) {
- if (  e.code === 'Enter' || e.keyCode === 13) {
+ if (  e.code === 'Enter' || e.keyCode === 13  || e.code === 'NumpadEnter' || e.code === 'ArrowRight') {
     handleSearch()
  }
 }
