@@ -35,7 +35,8 @@ if(querySelector.empty) {
 
 
 function handlekey(e) {
- if (  e.code === 'Enter' || e.keyCode === 13  || e.code === 'NumpadEnter' || e.code === 'ArrowRight') {
+  console.log('Key code:', e.code );
+ if (  e.code === 'Enter' || e.keyCode === 13 )  {
     handleSearch()
  }
 }
@@ -80,7 +81,11 @@ if(!res.exists()) {
 
   return (
     <div className='text-[white] color-[black]'> 
+        <span className='flex items-center justify-between'>
+
          <input  type='text' placeholder='Find a user' className='outline-none w-[100%] p-2 bg-[transparent]' onKeyDown={(e) => handlekey(e)} value={username} onChange={(e) => setUsername(e.target.value)} />
+       { username && <button onClick = {handleSearch}  className='p-1 bg-[black] opacity-50 font-[600] rounded-[10px] text-[15px] mr-[6px]'>search</button> }
+        </span>
          {
           error && <p className='p-2 text-[gray] font-medium'>no user found</p>
          }
